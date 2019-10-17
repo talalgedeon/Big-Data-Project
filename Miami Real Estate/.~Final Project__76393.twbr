@@ -19,29 +19,98 @@
           <named-connection caption='Miami_F' name='textscan.1ry60my090zvkf10t69uz0lqjdb8'>
             <connection class='textscan' directory='/Users/talalagedeon/Desktop/BigDataProject/Big-Data-Project/Miami Real Estate' filename='Miami_F.csv' password='' server='' />
           </named-connection>
+          <named-connection caption='MIA' name='textscan.0qo8soz0oj2phs1326le61iiam4s'>
+            <connection class='textscan' directory='/Users/talalagedeon/Desktop/BigDataProject/Big-Data-Project/Miami Real Estate' filename='MIA.csv' password='' server='' />
+          </named-connection>
         </named-connections>
-        <relation connection='textscan.1ry60my090zvkf10t69uz0lqjdb8' name='Miami_F.csv' table='[Miami_F#csv]' type='table'>
-          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
-            <column datatype='integer' name='F1' ordinal='0' />
-            <column datatype='string' name='ADDRESS' ordinal='1' />
-            <column datatype='real' name='LATITUDE' ordinal='2' />
-            <column datatype='real' name='LONGITUDE' ordinal='3' />
-            <column datatype='real' name='ALTITUDE' ordinal='4' />
-            <column datatype='integer' name='BEDS' ordinal='5' />
-            <column datatype='string' name='CITY' ordinal='6' />
-            <column datatype='string' name='CONST' ordinal='7' />
-            <column datatype='date' name='CONTRACT' ordinal='8' />
-            <column datatype='string' name='COUNTY' ordinal='9' />
-            <column datatype='integer' name='EST TAXES' ordinal='10' />
-            <column datatype='integer' name='FBATHS' ordinal='11' />
-            <column datatype='integer' name='HBATHS' ordinal='12' />
-            <column datatype='integer' name='LIST PRICE' ordinal='13' />
-            <column datatype='real' name='LOT SIZE' ordinal='14' />
-            <column datatype='integer' name='YEAR BUILT' ordinal='15' />
-            <column datatype='integer' name='ZIP CODE' ordinal='16' />
-            <column datatype='integer' name='year' ordinal='17' />
-          </columns>
+        <relation join='inner' type='join'>
+          <clause type='join'>
+            <expression op='='>
+              <expression op='[Miami_F.csv].[F1]' />
+              <expression op='[MIA.csv].[F1]' />
+            </expression>
+          </clause>
+          <relation connection='textscan.1ry60my090zvkf10t69uz0lqjdb8' name='Miami_F.csv' table='[Miami_F#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='string' name='ADDRESS' ordinal='1' />
+              <column datatype='real' name='LATITUDE' ordinal='2' />
+              <column datatype='real' name='LONGITUDE' ordinal='3' />
+              <column datatype='real' name='ALTITUDE' ordinal='4' />
+              <column datatype='integer' name='BEDS' ordinal='5' />
+              <column datatype='string' name='CITY' ordinal='6' />
+              <column datatype='string' name='CONST' ordinal='7' />
+              <column datatype='date' name='CONTRACT' ordinal='8' />
+              <column datatype='string' name='COUNTY' ordinal='9' />
+              <column datatype='integer' name='EST TAXES' ordinal='10' />
+              <column datatype='integer' name='FBATHS' ordinal='11' />
+              <column datatype='integer' name='HBATHS' ordinal='12' />
+              <column datatype='integer' name='LIST PRICE' ordinal='13' />
+              <column datatype='real' name='LOT SIZE' ordinal='14' />
+              <column datatype='integer' name='YEAR BUILT' ordinal='15' />
+              <column datatype='integer' name='ZIP CODE' ordinal='16' />
+              <column datatype='integer' name='year' ordinal='17' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0qo8soz0oj2phs1326le61iiam4s' name='MIA.csv' table='[MIA#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='real' name='LATITUDE' ordinal='1' />
+              <column datatype='real' name='LONGITUDE' ordinal='2' />
+              <column datatype='real' name='ALTITUDE IN' ordinal='3' />
+              <column datatype='integer' name='2030 Med' ordinal='4' />
+              <column datatype='real' name='Damage 2030' ordinal='5' />
+              <column datatype='real' name='Damage Done 30' ordinal='6' />
+              <column datatype='real' name='% 30' ordinal='7' />
+              <column datatype='integer' name='2060 Med' ordinal='8' />
+              <column datatype='real' name='Damage 2060' ordinal='9' />
+              <column datatype='real' name='Damage Done 60' ordinal='10' />
+              <column datatype='real' name='Damage Done 60 1' ordinal='11' />
+              <column datatype='real' name='% 60' ordinal='12' />
+              <column datatype='real' name='LOT SIZE' ordinal='13' />
+              <column datatype='integer' name='LIST PRICE' ordinal='14' />
+              <column datatype='integer' name='year' ordinal='15' />
+              <column datatype='integer' name='Cluster' ordinal='16' />
+            </columns>
+          </relation>
         </relation>
+        <cols>
+          <map key='[% 30]' value='[MIA.csv].[% 30]' />
+          <map key='[% 60]' value='[MIA.csv].[% 60]' />
+          <map key='[2030 Med]' value='[MIA.csv].[2030 Med]' />
+          <map key='[2060 Med]' value='[MIA.csv].[2060 Med]' />
+          <map key='[ADDRESS]' value='[Miami_F.csv].[ADDRESS]' />
+          <map key='[ALTITUDE IN]' value='[MIA.csv].[ALTITUDE IN]' />
+          <map key='[ALTITUDE]' value='[Miami_F.csv].[ALTITUDE]' />
+          <map key='[BEDS]' value='[Miami_F.csv].[BEDS]' />
+          <map key='[CITY]' value='[Miami_F.csv].[CITY]' />
+          <map key='[CONST]' value='[Miami_F.csv].[CONST]' />
+          <map key='[CONTRACT]' value='[Miami_F.csv].[CONTRACT]' />
+          <map key='[COUNTY]' value='[Miami_F.csv].[COUNTY]' />
+          <map key='[Cluster]' value='[MIA.csv].[Cluster]' />
+          <map key='[Damage 2030]' value='[MIA.csv].[Damage 2030]' />
+          <map key='[Damage 2060]' value='[MIA.csv].[Damage 2060]' />
+          <map key='[Damage Done 30]' value='[MIA.csv].[Damage Done 30]' />
+          <map key='[Damage Done 60 1]' value='[MIA.csv].[Damage Done 60 1]' />
+          <map key='[Damage Done 60]' value='[MIA.csv].[Damage Done 60]' />
+          <map key='[EST TAXES]' value='[Miami_F.csv].[EST TAXES]' />
+          <map key='[F1 (MIA.csv)]' value='[MIA.csv].[F1]' />
+          <map key='[F1]' value='[Miami_F.csv].[F1]' />
+          <map key='[FBATHS]' value='[Miami_F.csv].[FBATHS]' />
+          <map key='[HBATHS]' value='[Miami_F.csv].[HBATHS]' />
+          <map key='[LATITUDE (MIA.csv)]' value='[MIA.csv].[LATITUDE]' />
+          <map key='[LATITUDE]' value='[Miami_F.csv].[LATITUDE]' />
+          <map key='[LIST PRICE (MIA.csv)]' value='[MIA.csv].[LIST PRICE]' />
+          <map key='[LIST PRICE]' value='[Miami_F.csv].[LIST PRICE]' />
+          <map key='[LONGITUDE (MIA.csv)]' value='[MIA.csv].[LONGITUDE]' />
+          <map key='[LONGITUDE]' value='[Miami_F.csv].[LONGITUDE]' />
+          <map key='[LOT SIZE (MIA.csv)]' value='[MIA.csv].[LOT SIZE]' />
+          <map key='[LOT SIZE]' value='[Miami_F.csv].[LOT SIZE]' />
+          <map key='[YEAR BUILT]' value='[Miami_F.csv].[YEAR BUILT]' />
+          <map key='[ZIP CODE]' value='[Miami_F.csv].[ZIP CODE]' />
+          <map key='[year (MIA.csv)]' value='[MIA.csv].[year]' />
+          <map key='[year]' value='[Miami_F.csv].[year]' />
+        </cols>
         <metadata-records>
           <metadata-record class='capability'>
             <remote-name />
@@ -269,21 +338,234 @@
             <aggregation>Sum</aggregation>
             <contains-null>true</contains-null>
           </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;en_US&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1 (MIA.csv)]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LATITUDE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LATITUDE (MIA.csv)]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>LATITUDE</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LONGITUDE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LONGITUDE (MIA.csv)]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>LONGITUDE</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>ALTITUDE IN</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[ALTITUDE IN]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>ALTITUDE IN</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>2030 Med</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[2030 Med]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>2030 Med</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Damage 2030</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Damage 2030]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>Damage 2030</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Damage Done 30</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Damage Done 30]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>Damage Done 30</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>% 30</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[% 30]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>% 30</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>2060 Med</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[2060 Med]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>2060 Med</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Damage 2060</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Damage 2060]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>Damage 2060</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Damage Done 60</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Damage Done 60]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>Damage Done 60</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Damage Done 60 1</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Damage Done 60 1]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>Damage Done 60 1</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>% 60</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[% 60]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>% 60</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LOT SIZE</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[LOT SIZE (MIA.csv)]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>LOT SIZE</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>LIST PRICE</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[LIST PRICE (MIA.csv)]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>LIST PRICE</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[year (MIA.csv)]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>year</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Cluster</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Cluster]</local-name>
+            <parent-name>[MIA.csv]</parent-name>
+            <remote-alias>Cluster</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+          </metadata-record>
         </metadata-records>
       </connection>
       <aliases enabled='yes' />
       <column caption='Address' datatype='string' name='[ADDRESS]' role='dimension' type='nominal' />
+      <column caption='Altitude In' datatype='real' name='[ALTITUDE IN]' role='measure' type='quantitative' />
       <column caption='Altitude' datatype='real' name='[ALTITUDE]' role='measure' type='quantitative' />
       <column caption='Beds' datatype='integer' name='[BEDS]' role='measure' type='quantitative' />
       <column caption='City' datatype='string' name='[CITY]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
       <column caption='Const' datatype='string' name='[CONST]' role='dimension' type='nominal' />
       <column caption='Contract' datatype='date' name='[CONTRACT]' role='dimension' type='ordinal' />
       <column caption='County' datatype='string' name='[COUNTY]' role='dimension' semantic-role='[County].[Name]' type='nominal' />
+      <column datatype='integer' name='[Cluster (bin)]' role='dimension' type='quantitative'>
+        <calculation class='bin' decimals='-1' formula='[Cluster]' peg='0' size='0.714' />
+      </column>
+      <column datatype='integer' name='[Cluster]' role='measure' type='quantitative' />
+      <column datatype='real' name='[Damage 2030]' role='measure' type='quantitative' />
+      <column datatype='real' name='[Damage 2060]' role='measure' type='quantitative' />
       <column caption='Est Taxes' datatype='integer' name='[EST TAXES]' role='measure' type='quantitative' />
       <column caption='Fbaths' datatype='integer' name='[FBATHS]' role='measure' type='quantitative' />
       <column caption='Hbaths' datatype='integer' name='[HBATHS]' role='measure' type='quantitative' />
+      <column aggregation='Avg' datatype='real' name='[LATITUDE (MIA.csv)]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
       <column aggregation='Avg' caption='Latitude' datatype='real' name='[LATITUDE]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+      <column datatype='integer' name='[LIST PRICE (MIA.csv)]' role='measure' type='quantitative' />
       <column caption='List Price' datatype='integer' name='[LIST PRICE]' role='measure' type='quantitative' />
+      <column aggregation='Avg' datatype='real' name='[LONGITUDE (MIA.csv)]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
       <column aggregation='Avg' caption='Longitude' datatype='real' name='[LONGITUDE]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
       <column caption='Lot Size' datatype='real' name='[LOT SIZE]' role='measure' type='quantitative' />
       <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' user:auto-column='numrec'>
@@ -291,9 +573,13 @@
       </column>
       <column caption='Year Built' datatype='integer' name='[YEAR BUILT]' role='dimension' type='quantitative' />
       <column caption='Zip Code' datatype='integer' default-format='*00000' name='[ZIP CODE]' role='dimension' semantic-role='[ZipCode].[Name]' type='ordinal' />
+      <column datatype='integer' name='[year (MIA.csv)]' role='dimension' type='quantitative' />
       <column caption='Year' datatype='integer' name='[year]' role='dimension' type='quantitative' />
+      <column-instance column='[LIST PRICE (MIA.csv)]' derivation='Avg' name='[avg:LIST PRICE (MIA.csv):qk]' pivot='key' type='quantitative' />
       <column-instance column='[ADDRESS]' derivation='None' name='[none:ADDRESS:nk]' pivot='key' type='nominal' />
-      <layout dim-ordering='alphabetic' dim-percentage='0.456562' measure-ordering='alphabetic' measure-percentage='0.543438' show-structure='true' />
+      <column-instance column='[Damage 2030]' derivation='Sum' name='[sum:Damage 2030:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[Damage 2060]' derivation='Sum' name='[sum:Damage 2060:qk]' pivot='key' type='quantitative' />
+      <layout dim-ordering='alphabetic' dim-percentage='0.504621' measure-ordering='alphabetic' measure-percentage='0.495379' show-structure='true' />
       <style>
         <style-rule element='mark'>
           <encoding attr='color' field='[none:ADDRESS:nk]' type='palette'>
@@ -12553,6 +12839,17 @@
               <bucket>&quot;Fisher Island Dr Fisher Island Dr&quot;</bucket>
             </map>
           </encoding>
+          <encoding attr='color' field='[:Measure Names]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE (MIA.csv):qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:Damage 2030:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:Damage 2060:qk]&quot;</bucket>
+            </map>
+          </encoding>
         </style-rule>
       </style>
       <semantic-values>
@@ -12564,6 +12861,160 @@
     <mapsource name='Tableau' />
   </mapsources>
   <worksheets>
+    <worksheet name='2030 Damage'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Clusters Damage 2030&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Miami_new' name='federated.09ycnpb1s0k14f14dch5x060wx7s' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.09ycnpb1s0k14f14dch5x060wx7s'>
+            <column caption='Address' datatype='string' name='[ADDRESS]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Cluster]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Damage 2030]' role='measure' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[LATITUDE (MIA.csv)]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[LONGITUDE (MIA.csv)]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[LATITUDE (MIA.csv)]' derivation='Avg' name='[avg:LATITUDE (MIA.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LONGITUDE (MIA.csv)]' derivation='Avg' name='[avg:LONGITUDE (MIA.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ADDRESS]' derivation='None' name='[none:ADDRESS:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Damage 2030]' derivation='Sum' name='[sum:Damage 2030:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]'>
+            <groupfilter function='level-members' level='[none:ADDRESS:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:Cluster:ok]' />
+              <groupfilter function='member' level='[none:Cluster:ok]' member='0' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE (MIA.csv):qk]' field-type='quantitative' max='-8905466.2541429773' min='-8930882.6126327179' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE (MIA.csv):qk]' field-type='quantitative' max='2977857.1754694982' min='2961401.1610101429' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:Damage 2030:qk]' />
+              <size column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='2.1546962261199951' />
+                <format attr='mark-transparency' value='165' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE (MIA.csv):qk]</rows>
+        <cols>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE (MIA.csv):qk]</cols>
+      </table>
+      <simple-id uuid='{78877F87-A83E-417D-B34B-F3FBC7EF02A2}' />
+    </worksheet>
+    <worksheet name='2060 Damage'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Clusters Damage 2060&#10;&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Miami_new' name='federated.09ycnpb1s0k14f14dch5x060wx7s' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.09ycnpb1s0k14f14dch5x060wx7s'>
+            <column caption='Address' datatype='string' name='[ADDRESS]' role='dimension' type='nominal' />
+            <column datatype='integer' name='[Cluster]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Damage Done 60]' role='measure' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[LATITUDE (MIA.csv)]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column aggregation='Avg' datatype='real' name='[LONGITUDE (MIA.csv)]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[LATITUDE (MIA.csv)]' derivation='Avg' name='[avg:LATITUDE (MIA.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LONGITUDE (MIA.csv)]' derivation='Avg' name='[avg:LONGITUDE (MIA.csv):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ADDRESS]' derivation='None' name='[none:ADDRESS:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Damage Done 60]' derivation='Sum' name='[sum:Damage Done 60:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]'>
+            <groupfilter function='level-members' level='[none:ADDRESS:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:Cluster:ok]' />
+              <groupfilter function='member' level='[none:Cluster:ok]' member='0' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE (MIA.csv):qk]' field-type='quantitative' max='-8905466.2541429773' min='-8930882.6126327179' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE (MIA.csv):qk]' field-type='quantitative' max='2977857.1754694982' min='2961401.1610101429' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:Damage Done 60:qk]' />
+              <size column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='2.4198894500732422' />
+                <format attr='mark-transparency' value='165' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE (MIA.csv):qk]</rows>
+        <cols>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE (MIA.csv):qk]</cols>
+      </table>
+      <simple-id uuid='{B0D941C2-9F6C-4FFF-96A0-608595693D3D}' />
+    </worksheet>
     <worksheet name='Altitude'>
       <layout-options>
         <title>
@@ -12649,11 +13100,11 @@
       </table>
       <simple-id uuid='{995C3C0A-73A9-483D-80C3-80F8FC09FABE}' />
     </worksheet>
-    <worksheet name='Altitude (2)'>
+    <worksheet name='Cluster 2030'>
       <layout-options>
         <title>
           <formatted-text>
-            <run>Altitude</run>
+            <run>Clusters Damage 2030&#10;</run>
           </formatted-text>
         </title>
       </layout-options>
@@ -12667,60 +13118,31 @@
           </mapsources>
           <datasource-dependencies datasource='federated.09ycnpb1s0k14f14dch5x060wx7s'>
             <column caption='Address' datatype='string' name='[ADDRESS]' role='dimension' type='nominal' />
-            <column caption='Altitude' datatype='real' name='[ALTITUDE]' role='measure' type='quantitative' />
-            <column caption='Est Taxes' datatype='integer' name='[EST TAXES]' role='measure' type='quantitative' />
-            <column aggregation='Avg' caption='Latitude' datatype='real' name='[LATITUDE]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
-            <column caption='List Price' datatype='integer' name='[LIST PRICE]' role='measure' type='quantitative' />
-            <column aggregation='Avg' caption='Longitude' datatype='real' name='[LONGITUDE]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
-            <column-instance column='[ALTITUDE]' derivation='Avg' name='[avg:ALTITUDE:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[EST TAXES]' derivation='Avg' name='[avg:EST TAXES:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[LATITUDE]' derivation='Avg' name='[avg:LATITUDE:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[LIST PRICE]' derivation='Avg' name='[avg:LIST PRICE:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[LONGITUDE]' derivation='Avg' name='[avg:LONGITUDE:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[EST TAXES]' derivation='Max' name='[max:EST TAXES:qk]' pivot='key' type='quantitative' />
-            <column-instance column='[LIST PRICE]' derivation='Median' name='[med:LIST PRICE:qk]' pivot='key' type='quantitative' />
+            <column caption='City' datatype='string' name='[CITY]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column datatype='integer' name='[Cluster]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Damage 2030]' role='measure' type='quantitative' />
             <column-instance column='[ADDRESS]' derivation='None' name='[none:ADDRESS:nk]' pivot='key' type='nominal' />
-            <column-instance column='[EST TAXES]' derivation='Sum' name='[sum:EST TAXES:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[CITY]' derivation='None' name='[none:CITY:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Damage 2030]' derivation='Sum' name='[sum:Damage 2030:qk]' pivot='key' type='quantitative' />
           </datasource-dependencies>
-          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' included-values='in-range-or-null'>
-            <min>0.29999999999999999</min>
-            <max>4.6200000000000001</max>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]'>
+            <groupfilter function='level-members' level='[none:ADDRESS:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
           </filter>
-          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:EST TAXES:qk]' included-values='in-range-or-null'>
-            <min>0.0</min>
-            <max>224115.0</max>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:Cluster:ok]' />
+              <groupfilter function='member' level='[none:Cluster:ok]' member='0' />
+            </groupfilter>
           </filter>
-          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' included-values='in-range'>
-            <min>1311232.0</min>
-            <max>35069442.0</max>
-          </filter>
-          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[max:EST TAXES:qk]' included-values='all' />
-          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:EST TAXES:qk]' included-values='all' />
           <slices>
-            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]</column>
-            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]</column>
-            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:EST TAXES:qk]</column>
-            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:EST TAXES:qk]</column>
-            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[max:EST TAXES:qk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]</column>
           </slices>
           <aggregation value='true' />
         </view>
         <style>
-          <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]' field-type='quantitative' max='-8906675.2657577191' min='-8945736.9995799437' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]' field-type='quantitative' max='2984007.9953143988' min='2958717.1788960923' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
-          </style-rule>
-          <style-rule element='mark'>
-            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' min='0.20000000000000001' palette='red_10_0' type='interpolated' />
-            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' palette='red_green_diverging_10_0' type='interpolated' />
-            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[med:LIST PRICE:qk]' palette='red_green_diverging_10_0' type='interpolated' />
-            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:EST TAXES:qk]' palette='green_10_0' type='interpolated' />
-            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:EST TAXES:qk]' palette='green_10_0' type='interpolated' />
-            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[max:EST TAXES:qk]' palette='green_10_0' type='interpolated' />
-          </style-rule>
-          <style-rule element='legend-title'>
-            <format attr='text-align' value='center' />
-          </style-rule>
           <style-rule element='map'>
             <format attr='washout' value='0.0' />
           </style-rule>
@@ -12730,25 +13152,142 @@
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Automatic' />
+            <mark class='Area' />
             <encodings>
-              <color column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[max:EST TAXES:qk]' />
-              <size column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[med:LIST PRICE:qk]' />
-              <lod column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]' />
+              <color column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:CITY:nk]' />
             </encodings>
-            <style>
-              <style-rule element='mark'>
-                <format attr='mark-labels-cull' value='true' />
-                <format attr='mark-labels-show' value='false' />
-                <format attr='mark-transparency' value='255' />
-              </style-rule>
-            </style>
           </pane>
         </panes>
-        <rows>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]</rows>
-        <cols>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]</cols>
+        <rows>[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:Damage 2030:qk]</rows>
+        <cols>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:qk]</cols>
       </table>
-      <simple-id uuid='{1D5CCA5C-4D0B-48BC-9F98-17AA42567429}' />
+      <simple-id uuid='{AA16C277-0F66-4622-AAD1-D8F16F2E7E1D}' />
+    </worksheet>
+    <worksheet name='Cluster 2060'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Damage Per cities 2060&#10;&#10;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Miami_new' name='federated.09ycnpb1s0k14f14dch5x060wx7s' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.09ycnpb1s0k14f14dch5x060wx7s'>
+            <column caption='Address' datatype='string' name='[ADDRESS]' role='dimension' type='nominal' />
+            <column caption='City' datatype='string' name='[CITY]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column datatype='integer' name='[Cluster]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Damage Done 60]' role='measure' type='quantitative' />
+            <column-instance column='[ADDRESS]' derivation='None' name='[none:ADDRESS:nk]' pivot='key' type='nominal' />
+            <column-instance column='[CITY]' derivation='None' name='[none:CITY:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Damage Done 60]' derivation='Sum' name='[sum:Damage Done 60:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]'>
+            <groupfilter function='level-members' level='[none:ADDRESS:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:Cluster:ok]' />
+              <groupfilter function='member' level='[none:Cluster:ok]' member='0' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:CITY:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:Damage Done 60:qk]</rows>
+        <cols>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:qk]</cols>
+      </table>
+      <simple-id uuid='{5E7AE74D-AEF0-4147-A8F3-D527F787709F}' />
+    </worksheet>
+    <worksheet name='Cluster Current'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Cluster Current Listing Prices</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Miami_new' name='federated.09ycnpb1s0k14f14dch5x060wx7s' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.09ycnpb1s0k14f14dch5x060wx7s'>
+            <column caption='Address' datatype='string' name='[ADDRESS]' role='dimension' type='nominal' />
+            <column caption='City' datatype='string' name='[CITY]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column datatype='integer' name='[Cluster]' role='measure' type='quantitative' />
+            <column caption='List Price' datatype='integer' name='[LIST PRICE]' role='measure' type='quantitative' />
+            <column-instance column='[LIST PRICE]' derivation='Avg' name='[avg:LIST PRICE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ADDRESS]' derivation='None' name='[none:ADDRESS:nk]' pivot='key' type='nominal' />
+            <column-instance column='[CITY]' derivation='None' name='[none:CITY:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Cluster]' derivation='None' name='[none:Cluster:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]'>
+            <groupfilter function='level-members' level='[none:ADDRESS:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <filter class='categorical' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]'>
+            <groupfilter function='except' user:ui-domain='database' user:ui-enumeration='exclusive' user:ui-marker='enumerate'>
+              <groupfilter function='level-members' level='[none:Cluster:ok]' />
+              <groupfilter function='member' level='[none:Cluster:ok]' member='0' />
+            </groupfilter>
+          </filter>
+          <slices>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:ok]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Area' />
+            <encodings>
+              <color column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:CITY:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]</rows>
+        <cols>[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:qk]</cols>
+      </table>
+      <simple-id uuid='{124694BC-BBB4-4AA3-9078-5D233D1B8E0F}' />
     </worksheet>
     <worksheet name='Listing Price'>
       <layout-options>
@@ -12867,8 +13406,8 @@
         </view>
         <style>
           <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]' field-type='quantitative' max='-8902399.1609859336' min='-8938812.6764416564' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]' field-type='quantitative' max='2987423.1148736402' min='2963846.9075622275' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]' field-type='quantitative' max='-8909081.332767548' min='-8937349.2255969234' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]' field-type='quantitative' max='2984790.7442835127' min='2966488.4822453274' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
           </style-rule>
           <style-rule element='map'>
             <format attr='washout' value='0.0' />
@@ -12892,25 +13431,29 @@
       </table>
       <simple-id uuid='{55DA2BE3-86A6-4C0B-A78C-B87D07879FA5}' />
     </worksheet>
-    <worksheet name='Sheet 4'>
+    <worksheet name='Sheet 5'>
       <table>
         <view>
           <datasources />
           <aggregation value='true' />
         </view>
-        <style />
+        <style>
+          <style-rule element='refline'>
+            <format attr='stroke-color' id='refline0' value='#000000' />
+          </style-rule>
+        </style>
         <panes>
           <pane selection-relaxation-option='selection-relaxation-allow'>
             <view>
               <breakdown value='auto' />
             </view>
-            <mark class='Automatic' />
+            <mark class='Pie' />
           </pane>
         </panes>
         <rows />
         <cols />
       </table>
-      <simple-id uuid='{78877F87-A83E-417D-B34B-F3FBC7EF02A2}' />
+      <simple-id uuid='{3BDBCA3C-0668-4737-9031-FEBFE6D235E7}' />
     </worksheet>
   </worksheets>
   <dashboards>
@@ -13052,39 +13595,7 @@
       </viewpoint>
       <simple-id uuid='{B7528474-CA1C-470E-A7C7-BD6A577264C2}' />
     </window>
-    <window class='worksheet' maximized='true' name='Altitude (2)'>
-      <cards>
-        <edge name='left'>
-          <strip size='160'>
-            <card type='pages' />
-            <card type='filters' />
-            <card type='marks' />
-          </strip>
-        </edge>
-        <edge name='top'>
-          <strip size='2147483647'>
-            <card type='columns' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='rows' />
-          </strip>
-          <strip size='2147483647'>
-            <card type='title' />
-          </strip>
-        </edge>
-        <edge name='right'>
-          <strip size='160'>
-            <card param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
-            <card param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
-          </strip>
-        </edge>
-      </cards>
-      <viewpoint>
-        <default-map-tool-selection tool='1' />
-      </viewpoint>
-      <simple-id uuid='{4C303BDD-2639-4480-9820-44FE66EEB410}' />
-    </window>
-    <window class='worksheet' name='Sheet 4'>
+    <window class='worksheet' name='Cluster Current'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -13104,8 +13615,168 @@
             <card type='title' />
           </strip>
         </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:CITY:nk]' type='color' />
+          </strip>
+        </edge>
       </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{0E321DBC-20AC-4313-8C62-A562482CA64C}' />
+    </window>
+    <window class='worksheet' maximized='true' name='2030 Damage'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:qk]' type='size' />
+            <card pane-specification-id='0' param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:Damage 2030:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='1' />
+      </viewpoint>
       <simple-id uuid='{9604927E-415F-42E3-967A-2D2F28691B01}' />
+    </window>
+    <window class='worksheet' name='Cluster 2030'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:CITY:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{222D5ACD-88B8-4906-B4D9-383CFAE6AA28}' />
+    </window>
+    <window class='worksheet' name='2060 Damage'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:Cluster:qk]' type='size' />
+            <card pane-specification-id='0' param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:Damage Done 60:qk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='1' />
+      </viewpoint>
+      <simple-id uuid='{4B731EDA-41A6-4B4F-8378-9BE4C46EE021}' />
+    </window>
+    <window class='worksheet' name='Cluster 2060'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='0' param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:CITY:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{680E1ED6-EA37-425F-ADED-CB2311D8D729}' />
+    </window>
+    <window class='worksheet' name='Sheet 5'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='2' />
+      </viewpoint>
+      <simple-id uuid='{B673B83F-96D6-4247-89AF-C4BADE0F2852}' />
     </window>
     <window class='dashboard' name='Story 1'>
       <viewpoints />
