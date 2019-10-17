@@ -12584,21 +12584,41 @@
             <column caption='Address' datatype='string' name='[ADDRESS]' role='dimension' type='nominal' />
             <column caption='Altitude' datatype='real' name='[ALTITUDE]' role='measure' type='quantitative' />
             <column aggregation='Avg' caption='Latitude' datatype='real' name='[LATITUDE]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column caption='List Price' datatype='integer' name='[LIST PRICE]' role='measure' type='quantitative' />
             <column aggregation='Avg' caption='Longitude' datatype='real' name='[LONGITUDE]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
             <column-instance column='[ALTITUDE]' derivation='Avg' name='[avg:ALTITUDE:qk]' pivot='key' type='quantitative' />
             <column-instance column='[LATITUDE]' derivation='Avg' name='[avg:LATITUDE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LIST PRICE]' derivation='Avg' name='[avg:LIST PRICE:qk]' pivot='key' type='quantitative' />
             <column-instance column='[LONGITUDE]' derivation='Avg' name='[avg:LONGITUDE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LIST PRICE]' derivation='Median' name='[med:LIST PRICE:qk]' pivot='key' type='quantitative' />
             <column-instance column='[ADDRESS]' derivation='None' name='[none:ADDRESS:nk]' pivot='key' type='nominal' />
           </datasource-dependencies>
+          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' included-values='in-range-or-null'>
+            <min>0.29999999999999999</min>
+            <max>4.6200000000000001</max>
+          </filter>
+          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' included-values='in-range'>
+            <min>1311232.0</min>
+            <max>35069442.0</max>
+          </filter>
+          <slices>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]</column>
+          </slices>
           <aggregation value='true' />
         </view>
         <style>
           <style-rule element='axis'>
-            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]' field-type='quantitative' max='-8882528.8890681751' min='-8973184.6739012487' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
-            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]' field-type='quantitative' max='2999115.6532684104' min='2940419.8764269263' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]' field-type='quantitative' max='-8905314.1612740345' min='-8950461.290209312' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]' field-type='quantitative' max='2984441.0963005018' min='2955210.2445694394' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
           </style-rule>
           <style-rule element='mark'>
-            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' palette='red_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' min='0.20000000000000001' palette='red_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' palette='red_green_diverging_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[med:LIST PRICE:qk]' palette='red_green_diverging_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='legend-title'>
+            <format attr='text-align' value='center' />
           </style-rule>
           <style-rule element='map'>
             <format attr='washout' value='0.0' />
@@ -12612,6 +12632,7 @@
             <mark class='Automatic' />
             <encodings>
               <color column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' />
+              <size column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[med:LIST PRICE:qk]' />
               <lod column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]' />
             </encodings>
             <style>
@@ -12627,6 +12648,107 @@
         <cols>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]</cols>
       </table>
       <simple-id uuid='{995C3C0A-73A9-483D-80C3-80F8FC09FABE}' />
+    </worksheet>
+    <worksheet name='Altitude (2)'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run>Altitude</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Miami_new' name='federated.09ycnpb1s0k14f14dch5x060wx7s' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.09ycnpb1s0k14f14dch5x060wx7s'>
+            <column caption='Address' datatype='string' name='[ADDRESS]' role='dimension' type='nominal' />
+            <column caption='Altitude' datatype='real' name='[ALTITUDE]' role='measure' type='quantitative' />
+            <column caption='Est Taxes' datatype='integer' name='[EST TAXES]' role='measure' type='quantitative' />
+            <column aggregation='Avg' caption='Latitude' datatype='real' name='[LATITUDE]' role='measure' semantic-role='[Geographical].[Latitude]' type='quantitative' />
+            <column caption='List Price' datatype='integer' name='[LIST PRICE]' role='measure' type='quantitative' />
+            <column aggregation='Avg' caption='Longitude' datatype='real' name='[LONGITUDE]' role='measure' semantic-role='[Geographical].[Longitude]' type='quantitative' />
+            <column-instance column='[ALTITUDE]' derivation='Avg' name='[avg:ALTITUDE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[EST TAXES]' derivation='Avg' name='[avg:EST TAXES:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LATITUDE]' derivation='Avg' name='[avg:LATITUDE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LIST PRICE]' derivation='Avg' name='[avg:LIST PRICE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LONGITUDE]' derivation='Avg' name='[avg:LONGITUDE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[EST TAXES]' derivation='Max' name='[max:EST TAXES:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[LIST PRICE]' derivation='Median' name='[med:LIST PRICE:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[ADDRESS]' derivation='None' name='[none:ADDRESS:nk]' pivot='key' type='nominal' />
+            <column-instance column='[EST TAXES]' derivation='Sum' name='[sum:EST TAXES:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' included-values='in-range-or-null'>
+            <min>0.29999999999999999</min>
+            <max>4.6200000000000001</max>
+          </filter>
+          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:EST TAXES:qk]' included-values='in-range-or-null'>
+            <min>0.0</min>
+            <max>224115.0</max>
+          </filter>
+          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' included-values='in-range'>
+            <min>1311232.0</min>
+            <max>35069442.0</max>
+          </filter>
+          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[max:EST TAXES:qk]' included-values='all' />
+          <filter class='quantitative' column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:EST TAXES:qk]' included-values='all' />
+          <slices>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:EST TAXES:qk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:EST TAXES:qk]</column>
+            <column>[federated.09ycnpb1s0k14f14dch5x060wx7s].[max:EST TAXES:qk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]' field-type='quantitative' max='-8906675.2657577191' min='-8945736.9995799437' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]' field-type='quantitative' max='2984007.9953143988' min='2958717.1788960923' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+          </style-rule>
+          <style-rule element='mark'>
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' min='0.20000000000000001' palette='red_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' palette='red_green_diverging_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[med:LIST PRICE:qk]' palette='red_green_diverging_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:EST TAXES:qk]' palette='green_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[sum:EST TAXES:qk]' palette='green_10_0' type='interpolated' />
+            <encoding attr='color' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[max:EST TAXES:qk]' palette='green_10_0' type='interpolated' />
+          </style-rule>
+          <style-rule element='legend-title'>
+            <format attr='text-align' value='center' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[max:EST TAXES:qk]' />
+              <size column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[med:LIST PRICE:qk]' />
+              <lod column='[federated.09ycnpb1s0k14f14dch5x060wx7s].[none:ADDRESS:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='false' />
+                <format attr='mark-transparency' value='255' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]</rows>
+        <cols>[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]</cols>
+      </table>
+      <simple-id uuid='{1D5CCA5C-4D0B-48BC-9F98-17AA42567429}' />
     </worksheet>
     <worksheet name='Listing Price'>
       <layout-options>
@@ -12791,6 +12913,46 @@
       <simple-id uuid='{78877F87-A83E-417D-B34B-F3FBC7EF02A2}' />
     </worksheet>
   </worksheets>
+  <dashboards>
+    <dashboard name='Story 1' type='storyboard'>
+      <style />
+      <size maxheight='964' maxwidth='1016' minheight='964' minwidth='1016' />
+      <zones>
+        <zone h='100000' id='2' type='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98340' id='1' param='vert' removable='false' type='layout-flow' w='98426' x='787' y='830'>
+            <zone h='3423' id='3' type='title' w='98426' x='787' y='830' />
+            <zone h='10477' id='4' is-fixed='true' paired-zone-id='5' removable='false' type='flipboard-nav' w='98426' x='787' y='4253' />
+            <zone h='84440' id='5' paired-zone-id='4' removable='false' type='flipboard' w='98426' x='787' y='14730'>
+              <flipboard active-id='1' nav-type='caption' show-nav-arrows='true'>
+                <story-points>
+                  <story-point captured-sheet='Altitude' id='1'>
+                    <currentDeltas>
+                      <worksheet name='Altitude'>
+                        <style delta-type='added'>
+                          <style-rule element='axis'>
+                            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LATITUDE:qk]' field-type='quantitative' max='2988246.2548004733' min='2943987.180268921' projection='EPSG:3857' range-type='fixed' scope='rows' type='space' />
+                            <encoding attr='space' class='0' field='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LONGITUDE:qk]' field-type='quantitative' max='-8912394.7121553682' min='-8958097.6198496465' projection='EPSG:3857' range-type='fixed' scope='cols' type='space' />
+                          </style-rule>
+                        </style>
+                      </worksheet>
+                    </currentDeltas>
+                    <capturedDeltas />
+                  </story-point>
+                </story-points>
+              </flipboard>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <simple-id uuid='{7568DDDE-E2F5-4456-B4D0-A1E42B2D19F1}' />
+    </dashboard>
+  </dashboards>
   <windows source-height='30'>
     <window class='worksheet' name='Real Estate'>
       <cards>
@@ -12857,7 +13019,7 @@
       </viewpoint>
       <simple-id uuid='{C33072D2-74EA-4B3D-9660-94CE1B3A3C74}' />
     </window>
-    <window class='worksheet' maximized='true' name='Altitude'>
+    <window class='worksheet' name='Altitude'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -12879,6 +13041,8 @@
         </edge>
         <edge name='right'>
           <strip size='160'>
+            <card param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
             <card pane-specification-id='0' param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' type='color' />
           </strip>
         </edge>
@@ -12887,6 +13051,38 @@
         <default-map-tool-selection tool='2' />
       </viewpoint>
       <simple-id uuid='{B7528474-CA1C-470E-A7C7-BD6A577264C2}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Altitude (2)'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:LIST PRICE:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+            <card param='[federated.09ycnpb1s0k14f14dch5x060wx7s].[avg:ALTITUDE:qk]' show-domain='false' show-null-ctrls='false' type='filter' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <default-map-tool-selection tool='1' />
+      </viewpoint>
+      <simple-id uuid='{4C303BDD-2639-4480-9820-44FE66EEB410}' />
     </window>
     <window class='worksheet' name='Sheet 4'>
       <cards>
@@ -12910,6 +13106,11 @@
         </edge>
       </cards>
       <simple-id uuid='{9604927E-415F-42E3-967A-2D2F28691B01}' />
+    </window>
+    <window class='dashboard' name='Story 1'>
+      <viewpoints />
+      <active id='5' />
+      <simple-id uuid='{25AD8127-7A0F-4833-A00D-DEB48771A58E}' />
     </window>
   </windows>
 </workbook>
